@@ -1,6 +1,7 @@
 $vpn_name = @("tokyo","Seoul")
-$usr_name = Get-Content .\vpn.count | Select-Object -index 0
-$pswd = Get-Content .\vpn.count | Select-Object -index 1
+$acount_file = Join-Path $PSScriptRoot vpn.count
+$usr_name = Get-Content $acount_file | Select-Object -index 0
+$pswd = Get-Content $acount_file | Select-Object -index 1
 
 function Start-VPN($index){
 				& rasdial $vpn_name[$index] $usr_name $pswd
